@@ -1,0 +1,40 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+def defaultEncoding = 'UTF-8'
+def jdkVersion = '1.7'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'io.dropwizard:dropwizard-core:0.7.0'
+    compile 'org.projectlombok:lombok:1.14.2'
+}
+
+compileJava {
+    options.encoding = defaultEncoding
+}
+compileTestJava {
+    options.encoding = defaultEncoding
+}
+
+idea {
+    project {
+        jdkName = jdkVersion
+        languageLevel = jdkVersion
+    }
+}
+
+jar {
+    from (configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/*.SF'
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+    }
+    manifest {
+        attributes('Main-Class': 'tsukurukai.it_events.ItEventsApplication')
+    }
+}
