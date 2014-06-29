@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'java'
 
 def defaultEncoding = 'UTF-8'
-def jdkVersion = '1.7'
+def jdkVersion = '1.8'
 
 repositories {
     mavenCentral()
@@ -11,6 +11,7 @@ repositories {
 dependencies {
     compile 'io.dropwizard:dropwizard-core:0.7.0'
     compile 'org.projectlombok:lombok:1.14.2'
+    compile 'org.apache.httpcomponents:httpclient:4.3.4'
 }
 
 compileJava {
