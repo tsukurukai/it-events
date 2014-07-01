@@ -4,6 +4,8 @@ apply plugin: 'java'
 def defaultEncoding = 'UTF-8'
 def jdkVersion = '1.8'
 
+archivesBaseName = 'it-events'
+
 repositories {
     mavenCentral()
 }
@@ -39,3 +41,8 @@ jar {
         attributes('Main-Class': 'tsukurukai.it_events.ItEventsApplication')
     }
 }
+
+task stage(dependsOn: 'build') {
+  mustRunAfter 'clean'
+}
+
