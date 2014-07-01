@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,12 @@ public class EventResource {
 
     @GET
     public List<EventDto> sayHello() {
-        List<Event> events = Site.doorKeeper().events();
+        List<Event> es1 = Site.doorKeeper().events();
+        List<Event> es2 = Site.connpass().events();
+        List<Event> events = new ArrayList<>();
+        events.addAll(es1);
+        events.addAll(es2);
+        events.sort((ev1, ev2) -> ev1.getStart().compareTo(ev2.getStart()));
         return events.stream()
                      .map(ev -> new EventDto(
                                      ev.getTitle(),
