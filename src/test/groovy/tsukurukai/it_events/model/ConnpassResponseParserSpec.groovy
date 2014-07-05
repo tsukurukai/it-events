@@ -1,13 +1,17 @@
 package tsukurukai.it_events.model
 
 import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
 import spock.lang.Specification
 import com.google.common.base.Optional
 
 class ConnpassResponseParserSpec extends Specification {
+
+    ConnpassResponseParser sut
+
     def 'ConnpassAPIのレスポンスをEventオブジェクトに変換できる'() {
         setup:
-        def sut = new ConnpassResponseParser()
+        sut = new ConnpassResponseParser()
         def json =
 """
 {
@@ -80,15 +84,15 @@ class ConnpassResponseParserSpec extends Specification {
         def ev1 = result.get(0)
         ev1.getTitle()   == "_title"
         ev1.getUrl()     == "http://tsukurukai.com/event/7/"
-        ev1.getStart()   == new DateTime(2014,7,19,12,0,0)
-        ev1.getEnd()     == new DateTime(2014,7,21,14,0,0)
+        ev1.getStart()   == new DateTime(2014,7,19,12,0,0,DateTimeZone.forID("Asia/Tokyo"))
+        ev1.getEnd()     == new DateTime(2014,7,21,14,0,0,DateTimeZone.forID("Asia/Tokyo"))
         ev1.getAddress() == Optional.of("神奈川県横浜市")
 
         def ev2 = result.get(1)
-        ev2.getTitle() == "_title2"
-        ev2.getUrl()   == "http://tsukurukai.com/event/12/"
-        ev2.getStart() == new DateTime(2014,7,20,12,0,0)
-        ev2.getEnd() == new DateTime(2014,7,20,14,0,0)
+        ev2.getTitle()   == "_title2"
+        ev2.getUrl()     == "http://tsukurukai.com/event/12/"
+        ev2.getStart()   == new DateTime(2014,7,20,12,0,0,DateTimeZone.forID("Asia/Tokyo"))
+        ev2.getEnd()     == new DateTime(2014,7,20,14,0,0,DateTimeZone.forID("Asia/Tokyo"))
         ev2.getAddress() == Optional.of("神奈川県川崎市")
     }
 }
