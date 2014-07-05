@@ -1,5 +1,6 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'groovy'
 
 def defaultEncoding = 'UTF-8'
 def jdkVersion = '1.8'
@@ -14,6 +15,8 @@ dependencies {
     compile 'io.dropwizard:dropwizard-core:0.7.0'
     compile 'org.projectlombok:lombok:1.14.2'
     compile 'org.apache.httpcomponents:httpclient:4.3.4'
+    testCompile 'org.codehaus.groovy:groovy-all:2.0.8'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
 compileJava {
