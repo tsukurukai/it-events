@@ -18,11 +18,7 @@ public class EventResource {
 
     @GET
     public List<EventDto> sayHello() {
-        List<Event> es1 = Site.doorKeeper().events();
-        List<Event> es2 = Site.connpass().events();
-        List<Event> events = new ArrayList<>();
-        events.addAll(es1);
-        events.addAll(es2);
+        List<Event> events = Event.findAll();
         events.sort((ev1, ev2) -> ev1.getStart().compareTo(ev2.getStart()));
         return events.stream()
                      .map(ev -> new EventDto(

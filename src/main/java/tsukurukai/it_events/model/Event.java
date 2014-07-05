@@ -5,8 +5,21 @@ import lombok.Getter;
 import lombok.Value;
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 public class Event {
+
+    public static List<Event> findAll() {
+        List<Event> results= new ArrayList<>();
+        List<Event> es1 = Site.doorKeeper().events();
+        List<Event> es2 = Site.connpass().events();
+        results.addAll(es1);
+        results.addAll(es2);
+        return results;
+    }
+
     private final String title;
     private final String url;
     private final DateTime start;
