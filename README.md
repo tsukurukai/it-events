@@ -1,10 +1,5 @@
 # it-events
 
-## Build
-```sh
-$ ./gradlew stage
-```
-
 ## Run
 ```sh
 $ ./gradlew run
