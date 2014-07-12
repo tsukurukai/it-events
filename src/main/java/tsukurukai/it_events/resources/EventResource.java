@@ -1,14 +1,12 @@
 package tsukurukai.it_events.resources;
 
 import tsukurukai.it_events.model.Event;
-import tsukurukai.it_events.model.Site;
 import tsukurukai.it_events.representation.EventDto;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

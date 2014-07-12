@@ -3,7 +3,6 @@ package tsukurukai.it_events.model
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import spock.lang.Specification
-import com.google.common.base.Optional
 
 class DoorKeeperResponseParserSpec extends Specification {
 
@@ -91,7 +90,7 @@ class DoorKeeperResponseParserSpec extends Specification {
         ev2.getUrl()     == "http://tsukurukai.example.com/events/10"
         ev2.getStart()   == new DateTime(2014,7,31,19,0,0,DateTimeZone.forID("Asia/Tokyo"))
         ev2.getEnd()     == new DateTime(2014,7,31,21,0,0,DateTimeZone.forID("Asia/Tokyo"))
-        ev2.getAddress() == Optional.absent()
+        ev2.getAddress() == Optional.empty()
     }
 
 }

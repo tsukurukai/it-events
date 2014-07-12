@@ -3,7 +3,6 @@ package tsukurukai.it_events.model
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import spock.lang.Specification
-import com.google.common.base.Optional
 
 class ConnpassResponseParserSpec extends Specification {
 
