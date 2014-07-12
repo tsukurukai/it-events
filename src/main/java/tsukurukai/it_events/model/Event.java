@@ -1,12 +1,11 @@
 package tsukurukai.it_events.model;
 
-import com.google.common.base.Optional;
 import lombok.Getter;
-import lombok.Value;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 public class Event {

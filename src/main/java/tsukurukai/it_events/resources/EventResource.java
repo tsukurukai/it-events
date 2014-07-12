@@ -26,7 +26,7 @@ public class EventResource {
                                      ev.getUrl(),
                                      ev.getStart().toString(),
                                      ev.getEnd().toString(),
-                                     ev.getAddress().orNull()))
+                                     ev.getAddress().orElse(null)))
                      .collect(Collectors.toList());
     }
 }
