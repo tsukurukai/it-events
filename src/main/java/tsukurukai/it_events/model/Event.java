@@ -2,6 +2,7 @@ package tsukurukai.it_events.model;
 
 import lombok.Getter;
 import org.joda.time.DateTime;
+import tsukurukai.it_events.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,5 +32,17 @@ public class Event {
         this.start = new DateTime(start);
         this.end = new DateTime(end);
         this.address = address;
+    }
+
+    public static List<Event> getPagenationList(List<Event> list, int offset, int limit) {
+        List<Event> resultList = null;
+
+        try {
+            resultList = Util.getPagenationList(Optional.of(list), offset, limit);
+        } catch (Throwable t) {
+
+        }
+
+        return resultList;
     }
 }

@@ -9,13 +9,12 @@ class UtilSpec extends Specification {
 
         setup:
         def list = new ArrayList<Integer>( Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9) );
+        def optionalList = Optional.of(list);
 
         when:
-        Optional optionalResult = Util.getRangeListAsOpt(list, 1, 6);
+        List<Integer> result = Util.getRangeListAsOpt(optionalList, 1, 6);
 
         then:
-        optionalResult.isPresent();
-        List<Integer> result = optionalResult.get()
         result.size() == 5
         result.get(0) == 1
         result.get(1) == 2
@@ -28,13 +27,12 @@ class UtilSpec extends Specification {
 
         setup:
         def list = new ArrayList<Integer>( Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9) );
+        def optionalList = Optional.of(list);
 
         when:
-        Optional optionalResult = Util.getPagenationList(list, 2, 3);
+        List<Integer> result = Util.getPagenationList(optionalList, 2, 3);
 
         then:
-        optionalResult.isPresent();
-        List<Integer> result = optionalResult.get();
         result.size() == 3
         result.get(0) == 6
         result.get(1) == 7

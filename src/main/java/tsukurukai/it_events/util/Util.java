@@ -9,13 +9,16 @@ public class Util {
         return map.get(key) == null ? Optional.<T>empty() : Optional.of( (T)map.get(key) );
     }
 
-    public static <T> Optional<T> getPagenationList(List<Object> list, int offset, int limit) {
+    public static <T> List<T> getPagenationList(Optional<List<T>> optionalList, int offset, int limit) throws Throwable {
         int startIndex = offset * limit;
         int endIndex = startIndex + limit;
-        return getRangeListAsOpt(list, startIndex, endIndex);
+
+        return getRangeList(optionalList, startIndex, endIndex);
     }
 
-    public static <T> Optional<T> getRangeListAsOpt(List<Object> list, int startIndex, int endIndex) {
-        return list == null ? Optional.<T>empty() : Optional.of( (T)list.subList(startIndex, endIndex) );
+    public static <T> List<T> getRangeList(Optional<List<T>> optionalList, int startIndex, int endIndex) throws Throwable {
+        optionalList.orElseThrow(() -> new RuntimeException("value empty!"));
+        List<T> list = optionalList.get();
+        return list.subList(startIndex, endIndex);
     }
 }
